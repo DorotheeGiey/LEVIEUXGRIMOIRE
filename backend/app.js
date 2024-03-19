@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');   // permet d'accéder au path de mon serveur '
+// const path = require('path');   // permet d'accéder au path de mon serveur '
 
 const app = express();
 

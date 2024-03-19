@@ -24,15 +24,32 @@ exports.getAllBook = (req, res, next) => {
 
 
 exports.getOneBook = (req, res, next) => {
-  console.log("Recherche du livre avec l'ID :", req.params.id);                 
+  console.log("Recherche du livre avec l'ID :", req.params.id);                 // Imprimer l'ID du livre demandé pour vérifier qu'il est correctement reçu
   Book.findOne({ _id: req.params.id })
     .then(book => {
-      console.log("Livre trouvé :", book);                                       
+      console.log("Livre trouvé :", book);                                        // Imprimer l'objet book pour vérifier ce qui est retourné de la base de données
       res.status(200).json(book);
     })
     .catch(error => {
-      console.log("Erreur lors de la recherche du livre :", error);                 
+      console.log("Erreur lors de la recherche du livre :", error);                 // Imprimer l'erreur s'il y en a une lors de la recherche dans la base de données
       res.status(404).json({ error });
     });
 };
 
+
+// exports.getOneBook = (req, res, next) => {
+//   console.log("Recherche du livre avec l'ID :", req.params.id);                 
+//   Book.findOne({ _id: req.params.id })
+//     .then(book => {
+//       if (book.userId === req.auth.userId){
+//       console.log("Livre trouvé :", book, book.userId);                                       
+//       res.status(200).json(book);
+//       } else {(book.userId != req.auth.userID)
+//         res.status(200).json(book);
+//       }
+//     })
+//     .catch(error => {
+//       console.log("Erreur lors de la recherche du livre :", error);                 
+//       res.status(404).json({ error });
+//     });
+// };
